@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library>
+  
+  <extension id="something.unique">
+    <entryClass>blackberry.HelloWorldExtension</entryClass>
+  </extension>
+  
+  <platforms>
+    <platform value="JAVA">
+      <target version="default" config="JAVA_XHR" />
+    </platform>
+  </platforms>
+
+  <configurations>
+    <configuration name="JAVA_XHR" version="1.0" comment="For XHR architecture for Java implementation">
+      <src type="text/java" path="java" comment="API implementation in Java" />
+      <src type="text/javascript" path="js" comment="API JavaScript layer" />
+    </configuration>
+  </configurations>
+
+  <features>
+    <feature id="blackberry.helloworld" version="1.0.0"/>
+  </features>
+
+</library>

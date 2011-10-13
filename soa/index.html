@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" id="viewport" content="height=device-height,user-scalable=no" />
+<title>HelloWorld API TestApp</title>
+<script>
+    function sayHelloWorld() {
+        alert('Constant time! blackberry.helloworld.CONSTANT = ' + blackberry.helloworld.CONSTANT);
+        
+        alert('Property time! blackberry.helloworld.text = ' + blackberry.helloworld.text);
+        
+        alert('Function time! blackberry.helloworld.echo() returns ' + blackberry.helloworld.echo());
+        
+        blackberry.helloworld.onRandomEcho(function() { alert('Random event happened!'); });
+    }
+</script>
+</head>
+<body>
+<button type="button" onclick='sayHelloWorld();'>Click me to see the property!</button>
+</body>
+</html>

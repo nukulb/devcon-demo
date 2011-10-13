@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:rim="http://www.blackberry.com/ns/widgets" version="1.0.0" rim:header="RIM-Widget:rim/widget">
+    <name>SOA Sample</name>
+    
+    <description>Sample SOA extension highlighting the basic components</description>
+    
+    <author rim:copyright="2011">Research In Motion Inc.</author>
+    
+    <icon rim:hover="false" src="img/icon.png"/>
+    <icon rim:hover="true" src="img/icon.png"/>
+    
+    <content src="index.html"/>
+    
+	<feature id="blackberry.helloworld" />
+    <feature id="blackberry.system.event" />
+    
+</widget>
