@@ -19,6 +19,7 @@ import org.w3c.dom.Document;
 
 import net.rim.device.api.browser.field2.BrowserField;
 import net.rim.device.api.script.ScriptEngine;
+import net.rim.device.api.system.DeviceInfo;
 import net.rim.device.api.util.SimpleSortingVector;
 import net.rim.device.api.web.WidgetConfig;
 import net.rim.device.api.web.WidgetException;
@@ -38,13 +39,8 @@ public class HelloWorldExtension implements IJSExtension  {
     
     private static String[] JS_FILES = { "HelloWorld.js" };
     
-	private static final String PROPERTY_TEXT = "text";
-    
-	private static final String FUNCTION_ECHO ="echo";
-	private static final String FUNCTION_ECHO_ARG_COUNT ="count";
-	
-	private static final String EVENT_RANDOM_ECHO = "onRandomEcho";
-	private static final String EVENT_RANDOM_ECHO_ARG_MONITOR = "monitor";
+	private static final String FUNCTION_SAYHELLO = "sayHello";
+	private static final String FUNCTION_SAYHELLO_ARG_NAME = "name";
 
     public String[] getFeatureList() {
         return new String[] { FEATURE_ID };
@@ -68,17 +64,10 @@ public class HelloWorldExtension implements IJSExtension  {
         JSONObject returnValue = null;
 
         try {
-            if( method.equals( PROPERTY_TEXT ) ) {
-                data.put( PROPERTY_TEXT, "Hello World" );
-            }else if( method.equals( FUNCTION_ECHO ) ) {
-                int echoCount = parseInt((String) args[ 0 ]);
-                data.put( FUNCTION_ECHO_ARG_COUNT, echoCount );
-                data.put( FUNCTION_ECHO, HelloWorldImpl.echo(echoCount) );
-            } else if( method.equals( EVENT_RANDOM_ECHO ) ) {
-            	 String monitor = (String) request.getArgumentByName( EVENT_RANDOM_ECHO_ARG_MONITOR );
-                 data.put( EVENT_RANDOM_ECHO_ARG_MONITOR, monitor );
-
-                 HelloWorldImpl.listenToRandomEcho(parseBoolean(monitor));                 
+            if( method.equals( FUNCTION_SAYHELLO ) ) {
+                String name = (String) args[ 0 ];
+                data.put( FUNCTION_SAYHELLO_ARG_NAME, name );
+                data.put( FUNCTION_SAYHELLO, sayHello(name) );
             } 
         } catch( Exception e ) {
             msg = e.getMessage();
@@ -89,22 +78,11 @@ public class HelloWorldExtension implements IJSExtension  {
 
         response.setPostData( returnValue.toString().getBytes() );
     }
+    
+    public static String sayHello(String name){
+        return "Hello " + name + "! I'm " +  DeviceInfo.getDeviceName();
+    }
 
-    private static boolean parseBoolean( String str ) {
-        return ( str != null && //undefined
-        		 str.length() > 0 && //""
-        		!str.toLowerCase().equals( Boolean.FALSE.toString().toLowerCase() ) && //FALSE and false
-        		!str.equals("0") && //0
-        		!str.equals("null")); //null, NaN
-    }
-    
-    private static int parseInt( String str ) {
-        if (str != null){
-        	return Integer.parseInt(str);
-        }
-        return 0;
-    }
-    
     public void register( WidgetConfig widgetConfig, BrowserField browserField ) {
     }
     

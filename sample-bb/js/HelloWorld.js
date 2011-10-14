@@ -3,7 +3,7 @@
     
     HelloWorld = function () {};
 
-    function makeCall(toFunction, functionArgs) {
+    function makeCall (toFunction, functionArgs) {
         var request = new blackberry.transport.RemoteFunctionCall('blackberry/helloworld/' + toFunction), argName;
 
         if (functionArgs) {
@@ -23,42 +23,10 @@
         return retVal.data;
     }
 
-    HelloWorld.prototype.__defineGetter__('text', function () {
-        return makeCall('text').text;
-    });
-
-    HelloWorld.prototype.echo = function (count) {
-        if (!count || count < 1) {
-            count = 1;
-        }
+    HelloWorld.prototype.sayHello = function (name) {
         
-        return makeCall('echo', { 'count' : count }).echo;
+        return makeCall('sayHello', { 'name' : name.toString() }).sayHello;
     };
-
-    HelloWorld.prototype.onRandomEcho = function (onRandomEcho) {
-        
-        if (typeof onRandomEcho !== 'function') {
-            throw new Error('Argument to onRandomEcho must be a callback function.');
-        }
-        
-        var args = {'monitor' : true };
-        
-        blackberry.transport.poll('blackberry/helloworld/onRandomEcho/',
-            { 'get' : args },
-            
-            function (response) {
-                //Only continue polling is response was OK
-                if (response.code === OK) {
-                    onRandomEcho();
-                    return true;
-                }
-                
-                return false;
-            }
-        );
-    };
-    
-    HelloWorld.prototype.__defineGetter__('CONSTANT', function () { return 42; });
     
     blackberry.Loader.loadApi('blackberry.helloworld', HelloWorld);
 }());
