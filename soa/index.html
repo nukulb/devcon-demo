@@ -6,11 +6,14 @@
 <title>HelloWorld API TestApp</title>
 <script>
     function sayHelloWorld() {
-        alert('Function time! blackberry.helloworld.echo() returns ' + blackberry.helloworld.echo());
+        var name = document.getElementById('name').value;
+        alert('Function time! blackberry.helloworld.sayHello() returns ' + blackberry.helloworld.sayHello(name));
     }
 </script>
 </head>
 <body>
-<button type="button" onclick='sayHelloWorld();'>Click me to see the property!</button>
+    <button type="button" onclick='sayHelloWorld();'>Click me to say Hello!</button>
+    <br />
+    Name: <input type="text" id="name" />
 </body>
 </html>
