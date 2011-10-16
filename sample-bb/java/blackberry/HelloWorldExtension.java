@@ -15,8 +15,6 @@
  */
 package blackberry;
 
-import org.w3c.dom.Document;
-
 import net.rim.device.api.browser.field2.BrowserField;
 import net.rim.device.api.script.ScriptEngine;
 import net.rim.device.api.system.DeviceInfo;
@@ -24,10 +22,10 @@ import net.rim.device.api.util.SimpleSortingVector;
 import net.rim.device.api.web.WidgetConfig;
 import net.rim.device.api.web.WidgetException;
 
-import blackberry.common.util.json4j.JSONObject;
+import org.w3c.dom.Document;
 
 import blackberry.common.util.JSUtilities;
-
+import blackberry.common.util.json4j.JSONObject;
 import blackberry.core.IJSExtension;
 import blackberry.core.JSExtensionRequest;
 import blackberry.core.JSExtensionResponse;
@@ -80,7 +78,7 @@ public class HelloWorldExtension implements IJSExtension  {
     }
     
     public static String sayHello(String name){
-        return "Hello " + name + "! I'm " +  DeviceInfo.getDeviceName();
+        return "Hello " + name + "! I'm  a BlackBerry " +  DeviceInfo.getDeviceName();
     }
 
     public void register( WidgetConfig widgetConfig, BrowserField browserField ) {
