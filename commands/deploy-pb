@@ -1,0 +1,1 @@
+./blackberry-deploy -installApp -password playbook  -device 192.168.10.103 -package ~/github-nukulb/rough/soa/output/soa.bar
