@@ -6,8 +6,20 @@
 <title>HelloWorld API TestApp</title>
 <script>
     function sayHelloWorld() {
-        var name = document.getElementById('name').value;
-        alert('Function time! blackberry.helloworld.sayHello() returns ' + blackberry.helloworld.sayHello(name));
+        var name = document.getElementById('name').value,
+            prop,
+            result;
+        for (prop in blackberry.helloworld) {
+            if (blackberry.helloworld.hasOwnProperty(prop)) {
+                alert(blackberry.helloworld[prop]);
+            }
+        }
+        try {
+            result = blackberry.helloworld.sayHello(name);
+            alert('Function time! blackberry.helloworld.sayHello() returns ' + result);
+        } catch (err) {
+            alert(err);
+        }
     }
 </script>
 </head>

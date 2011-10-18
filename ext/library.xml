@@ -8,13 +8,20 @@
   <platforms>
     <platform value="AIR">
       <target version="default" config="AIR_XHR" />
+   </platform>
+    <platform value="JAVA">
+       <target version="default" config="JAVA_XHR" />
     </platform>
   </platforms>
 
   <configurations>
     <configuration name="AIR_XHR" version="1.0" comment="For XHR architecture for Air implementation">
-      <src type="text/actionscript" path="java" comment="API implementation in ActionScript" />
+      <src type="text/actionscript" path="air" comment="API implementation in ActionScript" />
       <src type="text/javascript" path="js" comment="API JavaScript layer" />
+    </configuration>
+    <configuration name="JAVA_XHR" version="1.0" commert="XHR for JAVA">
+        <src type="text/java" path="java" comment="Native Java Server" />
+        <src type="text/javascript" path="js" comment="Javascript Client" />
     </configuration>
   </configurations>
 
