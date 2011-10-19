@@ -25,7 +25,7 @@
 
 	HelloWorld.prototype.sayHello = function (name) {
 
-		return makeCall('sayHello', { 'name' : name.toString() }).sayHello;
+	//	return makeCall('sayHello', { 'name' : name.toString() }).sayHello;
 	};
 
 	blackberry.Loader.loadApi('blackberry.helloworld', HelloWorld);

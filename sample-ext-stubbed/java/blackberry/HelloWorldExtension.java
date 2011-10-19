@@ -38,12 +38,12 @@ public class HelloWorldExtension implements IJSExtension  {
     //public static final BrowserField _browserField; 
 
     public String[] getFeatureList() {
-        return new String[] { "blackberry.helloworld" };
+        //return new String[] { "blackberry.helloworld" };
     }
     
     public void loadFeature( String feature, String version, Document document, ScriptEngine scriptEngine,
             SimpleSortingVector jsInjectionPaths ) {
-        JSUtilities.loadJS( scriptEngine, JS_FILES, jsInjectionPaths );
+        //JSUtilities.loadJS( scriptEngine, JS_FILES, jsInjectionPaths );
     }
 
     /**
@@ -52,6 +52,7 @@ public class HelloWorldExtension implements IJSExtension  {
      */
     public void invoke( JSExtensionRequest request, JSExtensionResponse response ) throws WidgetException {
        
+      /*
         String method = request.getMethodName();
         Object[] args = request.getArgs();
         String msg = "";
@@ -75,11 +76,12 @@ public class HelloWorldExtension implements IJSExtension  {
         returnValue = new JSExtensionReturnValue( msg, code, data ).getReturnValue();
 
         response.setPostData( returnValue.toString().getBytes() );
-        
+
+       */        
     }
     
     public static String sayHello(String name){
-        return "Hello " + name + "! I'm  a BlackBerry " +  DeviceInfo.getDeviceName();
+        //return "Hello " + name + "! I'm  a BlackBerry " +  DeviceInfo.getDeviceName();
     }
     
     

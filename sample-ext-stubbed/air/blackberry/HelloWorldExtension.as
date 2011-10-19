@@ -24,11 +24,12 @@ package blackberry
 	public class HelloWorldExtension extends DefaultExtension
 	{
 		public override function getFeatureList() : Array {
-			return new Array("blackberry.helloworld");
+			//return new Array("blackberry.helloworld");
 		}
 		
 		public function sayHello(name : String) : Object {
-			var sayHello : Object = {
+	    /*
+            var sayHello : Object = {
 				'name' : name,
 				'sayHello' : "Hello " + name + "! I'm a BlackBerry " + Device.device.os
 			};
@@ -40,7 +41,7 @@ package blackberry
 			};
 			
 			return returnObject;
-        
+        */
 		}
 		
 	}
