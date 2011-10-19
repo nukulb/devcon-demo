@@ -33,15 +33,12 @@ import blackberry.core.JSExtensionReturnValue;
 
 public class HelloWorldExtension implements IJSExtension  {
     
-	private static final String FEATURE_ID = "blackberry.helloworld";
-    
     private static String[] JS_FILES = { "HelloWorld.js" };
     
-	private static final String FUNCTION_SAYHELLO = "sayHello";
-	private static final String FUNCTION_SAYHELLO_ARG_NAME = "name";
+    //public static final BrowserField _browserField; 
 
     public String[] getFeatureList() {
-        return new String[] { FEATURE_ID };
+        return new String[] { "blackberry.helloworld" };
     }
     
     public void loadFeature( String feature, String version, Document document, ScriptEngine scriptEngine,
@@ -54,18 +51,21 @@ public class HelloWorldExtension implements IJSExtension  {
      * @throws WidgetException if specified method cannot be recognized
      */
     public void invoke( JSExtensionRequest request, JSExtensionResponse response ) throws WidgetException {
+       
         String method = request.getMethodName();
         Object[] args = request.getArgs();
         String msg = "";
         int code = JSExtensionReturnValue.SUCCESS;
         JSONObject data = new JSONObject();
         JSONObject returnValue = null;
-
+        
+        
+ 
         try {
-            if( method.equals( FUNCTION_SAYHELLO ) ) {
+            if( method.equals( "sayHello" ) ) {
                 String name = (String) args[ 0 ];
-                data.put( FUNCTION_SAYHELLO_ARG_NAME, name );
-                data.put( FUNCTION_SAYHELLO, sayHello(name) );
+                data.put( "name", name );
+                data.put( "sayHello", sayHello(name) );
             } 
         } catch( Exception e ) {
             msg = e.getMessage();
@@ -75,13 +75,16 @@ public class HelloWorldExtension implements IJSExtension  {
         returnValue = new JSExtensionReturnValue( msg, code, data ).getReturnValue();
 
         response.setPostData( returnValue.toString().getBytes() );
+        
     }
     
     public static String sayHello(String name){
         return "Hello " + name + "! I'm  a BlackBerry " +  DeviceInfo.getDeviceName();
     }
-
+    
+    
     public void register( WidgetConfig widgetConfig, BrowserField browserField ) {
+       // _browserField = browserField;
     }
     
     public void unloadFeatures() {

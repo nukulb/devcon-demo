@@ -7,13 +7,7 @@
 <script>
     function sayHelloWorld() {
         var name = document.getElementById('name').value,
-            prop,
             result;
-        for (prop in blackberry.helloworld) {
-            if (blackberry.helloworld.hasOwnProperty(prop)) {
-                alert(blackberry.helloworld[prop]);
-            }
-        }
         try {
             result = blackberry.helloworld.sayHello(name);
             alert('Function time! blackberry.helloworld.sayHello() returns ' + result);
@@ -24,8 +18,21 @@
 </script>
 </head>
 <body>
-    <button type="button" onclick='sayHelloWorld();'>Click me to say Hello!</button>
+    <div style="text-align:center; vertical-align:middle">
     <br />
-    Name: <input type="text" id="name" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <input type="text" id="name" style="height: 100px; width: 400px; font-size: 50px;" />
+    <br />
+    <br />
+    <button type="button" style="height: 100px; width: 400px; font-size: 50px;" onclick='sayHelloWorld();'>say Hello!</button>
+    </div>
 </body>
 </html>

@@ -23,10 +23,8 @@ package blackberry
 	
 	public class HelloWorldExtension extends DefaultExtension
 	{
-        private const FEATURE_ID:String = "blackberry.helloworld";
-		
 		public override function getFeatureList() : Array {
-			return new Array(FEATURE_ID);
+			return new Array("blackberry.helloworld");
 		}
 		
 		public function sayHello(name : String) : Object {
@@ -42,6 +40,7 @@ package blackberry
 			};
 			
 			return returnObject;
+        
 		}
 		
 	}
